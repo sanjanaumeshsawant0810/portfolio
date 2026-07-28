@@ -5,7 +5,7 @@ Streamlit portfolio site for data science, data engineering, and applied AI role
 ## Structure
 
 - `app.py` boots the app and routes between pages.
-- `pages/` contains focused page modules for Home, About, Projects, Resume, and Contact.
+- `views/` contains focused page modules for Home, About, Projects, Resume, and Contact.
 - `components/` contains shared UI pieces such as the navigation, footer, and site-wide styling.
 - `data/` stores the shared profile content and project records so details stay consistent across pages.
 

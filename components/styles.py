@@ -34,6 +34,12 @@ def apply_global_styles() -> None:
             background-size: 34px 34px, 34px 34px, auto, auto, auto;
         }
 
+        section[data-testid="stSidebar"],
+        div[data-testid="stSidebarNav"],
+        div[data-testid="collapsedControl"] {
+            display: none !important;
+        }
+
         h1, h2, h3, h4 {
             font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
             color: #f0f2e9;

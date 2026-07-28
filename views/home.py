@@ -9,8 +9,9 @@ import streamlit.components.v1 as components
 from data.profile import PROFILE
 
 
-BASE_PORTRAIT_PATH = Path("/Users/sanjanasawant/Downloads/wide portrait 1.png")
-CHROME_PORTRAIT_PATH = Path("/Users/sanjanasawant/Downloads/wide portrait 2.png")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+BASE_PORTRAIT_PATH = ROOT_DIR / "assets/hero/base-portrait.png"
+CHROME_PORTRAIT_PATH = ROOT_DIR / "assets/hero/chrome-portrait.png"
 
 
 def _to_data_uri(path: Path) -> str | None:
@@ -368,11 +369,7 @@ def render_home_page() -> None:
     st.markdown(hero_card_html, unsafe_allow_html=True)
     st.markdown("<div class='hero-stack-gap'></div>", unsafe_allow_html=True)
 
-    if not _render_interactive_hero():
-        st.info(
-            "The interactive portrait reveal is waiting for the two source images at "
-            f"`{BASE_PORTRAIT_PATH}` and `{CHROME_PORTRAIT_PATH}`."
-        )
+    _render_interactive_hero()
 
     st.markdown("<div class='home-hero-gap'></div>", unsafe_allow_html=True)
 

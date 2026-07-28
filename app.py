@@ -4,11 +4,11 @@ from components.footer import render_footer
 from components.navbar import render_navbar
 from components.styles import apply_global_styles
 from data.profile import PROFILE
-from pages.about import render_about_page
-from pages.contact import render_contact_page
-from pages.home import render_home_page
-from pages.projects import render_projects_page
-from pages.resume import render_resume_page
+from views.about import render_about_page
+from views.contact import render_contact_page
+from views.home import render_home_page
+from views.projects import render_projects_page
+from views.resume import render_resume_page
 
 
 st.set_page_config(

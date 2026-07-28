@@ -3,7 +3,7 @@ PROFILE = {
     "headline": "I build data and AI products that turn messy inputs into something people can actually use.",
     "location": "New Brunswick, New Jersey",
     "email": "sanjanaumesh.sawant@rutgers.edu",
-    "linkedin": "https://www.linkedin.com/in/sanjana-umesh-sawant-b5719a222/",
+    "linkedin": "https://www.linkedin.com/in/sanjana-umesh-sawant-oct082002/",
     "github": "https://github.com/sanjanaumeshsawant0810",
     "summary": (
         "I like work where the data is messy, the logic matters, and the end result actually helps someone decide what to do next. "

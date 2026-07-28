@@ -105,6 +105,10 @@ def apply_global_styles() -> None:
             background: transparent;
         }
 
+        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child {
+            display: none;
+        }
+
         div[data-testid="stRadio"] div[role="radiogroup"] p {
             color: var(--muted);
             font-weight: 700;

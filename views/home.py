@@ -335,19 +335,6 @@ def _render_interactive_hero() -> bool:
 
 
 def render_home_page() -> None:
-    st.markdown(
-        """
-        <div class="content-card section-intro-card">
-            <div class="section-label">Overview</div>
-            <h2 class="section-title">This is the version of my work that actually sounds like me</h2>
-            <p>I did not want this site to read like generic portfolio copy. I wanted it to show how I think, what I build, where I have done real work, and why I care about certain problems more than others.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
-
     hero_card_html = f"""
         <div class="hero-card hero-intro-card">
             <div class="eyebrow">Data portfolio</div>

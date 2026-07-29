@@ -18,6 +18,20 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stToolbar"],
+    [data-testid="stStatusWidget"],
+    [data-testid="stDecoration"],
+    header {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 apply_global_styles()
 
 PAGES = {

@@ -138,7 +138,7 @@ def add_experience(story, styles):
 
 
 def add_projects(story, styles):
-    section(story, "SELECTED DATA SCIENCE PROJECTS", styles)
+    section(story, "PROJECTS", styles)
     projects = [
         ("InstaDine | Full-Stack AI Restaurant Recommendation Platform", "Spring 2026", [
             "Built a full-stack AI product using Flask, PostgreSQL, Docker, Google Places API, and Vertex AI/Gemini to deliver personalized, live-data-grounded recommendations.",
@@ -176,11 +176,7 @@ def add_header(story, styles):
 
 
 def add_footer(canvas, doc):
-    canvas.saveState()
-    canvas.setFont("Helvetica", 7.4)
-    canvas.setFillColor(colors.HexColor("#68747B"))
-    canvas.drawCentredString(letter[0] / 2, 0.32 * inch, f"Sanjana Sawant | Data Science Resume | {doc.page}")
-    canvas.restoreState()
+    return
 
 
 def build_pdf():

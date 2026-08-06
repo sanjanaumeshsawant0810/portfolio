@@ -36,7 +36,7 @@ def render_resume_page() -> None:
     )
 
     st.download_button(
-        "Download data science resume",
+        "Download resume",
         data=RESUME_PATH.read_bytes(),
         file_name=RESUME_PATH.name,
         mime="application/pdf",

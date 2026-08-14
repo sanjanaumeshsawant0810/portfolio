@@ -13,7 +13,7 @@ from views.resume import render_resume_page
 
 st.set_page_config(
     page_title=f"{PROFILE['name']} | Portfolio",
-    page_icon="Data-Professionals.png",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="collapsed",
 )

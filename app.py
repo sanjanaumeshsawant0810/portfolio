@@ -21,11 +21,14 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    [data-testid="stHeader"],
     [data-testid="stToolbar"],
     [data-testid="stStatusWidget"],
     [data-testid="stDecoration"],
+    .stAppHeader,
     header {
         display: none;
+        height: 0;
     }
     </style>
     """,

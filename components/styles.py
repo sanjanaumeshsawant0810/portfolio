@@ -88,7 +88,7 @@ def apply_global_styles() -> None:
         }
 
         .block-container {
-            padding-top: 1.5rem;
+            padding-top: 0.8rem;
             padding-bottom: 3.5rem;
             max-width: 1120px;
         }
@@ -121,7 +121,7 @@ def apply_global_styles() -> None:
             margin-left: auto;
             margin-right: auto;
             position: sticky;
-            top: 0.9rem;
+            top: 0.2rem;
             z-index: 10;
         }
 
@@ -156,6 +156,12 @@ def apply_global_styles() -> None:
             width: 0 !important;
             height: 0 !important;
             margin: 0 !important;
+        }
+
+        div[data-testid="stRadio"] input[type="radio"] + div,
+        div[data-testid="stRadio"] [data-baseweb="radio"],
+        div[data-testid="stRadio"] [role="radio"] {
+            display: none !important;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child {

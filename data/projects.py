@@ -4,7 +4,7 @@ PROJECTS = [
         "dates": "Spring 2026",
         "tag": "Agentic AI product",
         "problem": (
-            "Most restaurant tools feel shallow to me. They throw generic results at users instead of asking better questions, "
+            "Most restaurant tools feel shallow. They throw generic results at users instead of asking better questions, "
             "grounding answers in live place data, or checking whether a place actually fits what someone wants to eat."
         ),
         "built": (
@@ -37,10 +37,10 @@ PROJECTS = [
         ),
         "tools": ["Python", "Transformers", "CodeCarbon", "SQuAD 2.0", "LoRA", "NLP Evaluation"],
         "result": (
-            "I made the performance-versus-emissions tradeoff visible instead of hand-wavy by comparing model quality against carbon cost across architectures and training choices."
+            "I made the performance versus emissions tradeoff visible by comparing model quality against carbon cost across architectures and training choices."
         ),
         "hover": (
-            "I cared about this one because responsible AI should mean something measurable, not just a nice sentence in a presentation."
+            "I cared about this one because responsible AI should mean something measurable, not just something that sounds good in a presentation."
         ),
         "link_url": "https://github.com/shrutielangovan/CarbonEmissionsinFine-TuningLanguageModelS",
         "link_label": "View repository",
@@ -81,7 +81,7 @@ PROJECTS = [
             "I packaged it as a reusable bankruptcy workflow so modeling, evaluation, and business-facing explanation could live in one place."
         ),
         "hover": (
-            "I treated this as a productized prediction lab, not just a single model run, because that is closer to how the work would matter in real life."
+            "I treated this as a productized prediction workflow, not just a single model run, because that is closer to how the work would matter in real use."
         ),
         "link_url": "https://github.com/sanjanaumeshsawant0810/bankruptcy-lab",
         "link_label": "View repository",
@@ -91,7 +91,7 @@ PROJECTS = [
         "dates": "2026",
         "tag": "Fintech analytics",
         "problem": (
-            "Credit-risk work is not just about getting a score. The real problem is making the tradeoff between missed risk and unnecessary rejections visible."
+            "Credit-risk work is not just about getting a score. It is about making the tradeoff between missed risk and unnecessary rejections visible."
         ),
         "built": (
             "I built an end-to-end Home Credit default-risk pipeline around 307K+ application records using reusable preprocessing, "
@@ -110,7 +110,7 @@ PROJECTS = [
         "dates": "2026",
         "tag": "ML research",
         "problem": (
-            "Probabilistic models get discussed in a very abstract way, so I wanted to understand one by actually rebuilding it and seeing where the assumptions break."
+            "Probabilistic models often get discussed in the abstract, so I wanted to understand one by rebuilding it and seeing where the assumptions break."
         ),
         "built": (
             "I replicated the Deep Exponential Families paper using mean-field variational inference instead of black-box variational inference, "
@@ -121,7 +121,7 @@ PROJECTS = [
             "I turned a theory-heavy paper into a runnable replication and made the implementation gaps explicit instead of pretending it was a perfect match."
         ),
         "hover": (
-            "The point here was disciplined replication and interpretation, not pretending that every research reimplementation is exact."
+            "The point here was disciplined replication and interpretation, not pretending every research reimplementation is exact."
         ),
     },
     {
@@ -129,7 +129,7 @@ PROJECTS = [
         "dates": "2025",
         "tag": "Causal inference",
         "problem": (
-            "Education interventions are easy to oversell, so I wanted the analysis to be careful about uncertainty instead of dramatic for no reason."
+            "Education interventions are easy to oversell, so I wanted the analysis to be careful about uncertainty instead of more dramatic than the evidence supported."
         ),
         "built": (
             "I analyzed a growth-mindset intervention using bootstrap validation, interpretable outcome analysis, and student-versus-school factor comparisons."

@@ -25,10 +25,26 @@ def _image_to_data_uri(path_str: str) -> str:
 def render_projects_page() -> None:
     st.markdown(
         """
-        <div class="content-card">
-            <div class="section-label">Projects</div>
-            <h1>The projects here are the ones I would actually want to talk about</h1>
-            <p>I am not trying to make every project look the same. Some of these are more product-heavy, some are more analytics-heavy, and some are here because they show how I think when the problem is messy, technical, or worth digging into.</p>
+        <div class="section-shell">
+            <div class="content-card">
+                <div class="section-label">Projects</div>
+                <h1>The projects here are the ones I would actually want to talk about</h1>
+                <p>I am not trying to make every project look the same. Some are more product-heavy, some are more analytics-heavy, and some are here because they show how I think when the problem is messy or technically hard.</p>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-box">
+                    <span>What matters here</span>
+                    <strong>Clear problem framing, what I built, and why the result matters.</strong>
+                </div>
+                <div class="detail-box">
+                    <span>What I avoid</span>
+                    <strong>Project cards that hide the useful part until someone hovers and has to guess where to look.</strong>
+                </div>
+                <div class="detail-box">
+                    <span>How to read this page</span>
+                    <strong>Each card starts with the context, then the build, then the business or research takeaway.</strong>
+                </div>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -37,7 +53,6 @@ def render_projects_page() -> None:
     st.markdown("<div class='home-hero-gap'></div>", unsafe_allow_html=True)
 
     for project in PROJECTS:
-        tools = " | ".join(project["tools"])
         image_html = ""
         if "image_path" in project:
             image_src = _image_to_data_uri(project["image_path"])
@@ -45,22 +60,27 @@ def render_projects_page() -> None:
 
         link_html = ""
         if project.get("link_url") and project.get("link_label"):
-            link_html = f'<p><a href="{project["link_url"]}" target="_blank">{project["link_label"]}</a></p>'
+            link_html = f'<div class="project-link-row"><a href="{project["link_url"]}" target="_blank">{project["link_label"]}</a></div>'
 
         card_html = (
-            f'<div class="hover-project-card">'
+            f'<div class="project-card">'
+            f'<div class="project-card-inner">'
             f"{image_html}"
-            f'<div class="hover-summary">'
-            f"<div>"
-            f'<div class="hover-topline">{project["dates"]} | {project["tag"]}</div>'
+            f'<div class="project-meta">'
+            f'<div class="project-date">{project["dates"]}</div>'
+            f'<div class="project-tag">{project["tag"]}</div>'
+            f"</div>"
+            f'<div class="project-lead">'
             f'<h3>{project["title"]}</h3>'
+            f'<p class="project-summary">{project["result"]}</p>'
             f"</div>"
-            f'<p class="hover-preview">{project["result"]}</p>'
+            f'<div class="project-structure">'
+            f'<div class="project-block"><strong>Problem</strong><p>{project["problem"]}</p></div>'
+            f'<div class="project-block"><strong>What I built</strong><p>{project["built"]}</p></div>'
+            f'<div class="project-block"><strong>Why it matters</strong><p>{project["hover"]}</p></div>'
             f"</div>"
-            f'<div class="hover-details">'
-            f'<p><strong>Problem:</strong> {project["problem"]}</p>'
-            f'<p><strong>What I built:</strong> {project["built"]}</p>'
-            f'<p><strong>Tools used:</strong> {tools}</p>'
+            f'<div class="project-footer">'
+            f'<div class="tool-chip-row">{"".join(f"<span class=\'tool-chip\'>{tool}</span>" for tool in project["tools"])}</div>'
             f"{link_html}"
             f"</div>"
             f"</div>"

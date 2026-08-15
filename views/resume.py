@@ -35,13 +35,27 @@ def render_resume_page() -> None:
         unsafe_allow_html=True,
     )
 
-    st.download_button(
-        "Download resume",
-        data=RESUME_PATH.read_bytes(),
-        file_name=RESUME_PATH.name,
-        mime="application/pdf",
-        use_container_width=True,
+    st.markdown(
+        """
+        <div class="content-card compact-card">
+            <div class="section-label">Resume</div>
+            <h1>Resume download and preview</h1>
+            <p>This page keeps the document in the same structure as the rest of the site: quick access to the file first, then an embedded preview for a faster scan.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
+
+    st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
+
+    with st.container(border=False):
+        st.download_button(
+            "Download resume",
+            data=RESUME_PATH.read_bytes(),
+            file_name=RESUME_PATH.name,
+            mime="application/pdf",
+            use_container_width=True,
+        )
     st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
     if not PREVIEW_PATH.exists():
         st.error("The resume preview is missing from assets/resume.")

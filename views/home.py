@@ -335,20 +335,32 @@ def _render_interactive_hero() -> bool:
 
 
 def render_home_page() -> None:
+    hero_subtitle = "I take messy data and turn it into something people can actually use."
+    hero_summary = (
+        "I am not that interested in data for its own sake. I care about whether the work helps someone decide what to do next. "
+        "Most of my work lives in the overlap between analytics, product thinking, and implementation. That includes KPI reporting, "
+        "SQL and ETL pipelines, ranking and recommendation systems, and models that have to make sense to someone who is never going to read a notebook."
+    )
+    hero_kpis = [
+        {"value": "307K+", "label": "borrower records in my loan default project"},
+        {"value": "78%", "label": "trust reached in AI restaurant recommendation testing (started at 17%)"},
+        {"value": "3.6/4.0", "label": "GPA, Rutgers M.S. in Data Science"},
+        {"value": "Top 12%", "label": "paper placement at ICICIT 2024"},
+    ]
     hero_card_html = f"""
         <div class="hero-card hero-intro-card">
             <div class="eyebrow">Data portfolio</div>
             <h1 class="hero-title">{PROFILE['name']}</h1>
-            <p class="hero-subtitle">{PROFILE['headline']}</p>
-            <p>{PROFILE['summary']}</p>
+            <p class="hero-subtitle">{hero_subtitle}</p>
+            <p>{hero_summary}</p>
             <div class="chip-row">
                 <span class="chip">Data science</span>
                 <span class="chip">Analytics engineering</span>
-                <span class="chip">SQL and PostgreSQL</span>
+                <span class="chip">SQL &amp; PostgreSQL</span>
                 <span class="chip">Cloud dashboards</span>
             </div>
             <div class="kpi-grid">
-                {''.join(f"<div class='kpi'><strong>{item['value']}</strong>{item['label']}</div>" for item in PROFILE['highlights'])}
+                {''.join(f"<div class='kpi'><strong>{item['value']}</strong>{item['label']}</div>" for item in hero_kpis)}
             </div>
         </div>
     """
@@ -360,46 +372,41 @@ def render_home_page() -> None:
 
     st.markdown("<div class='home-hero-gap'></div>", unsafe_allow_html=True)
 
-    highlight_columns = st.columns(3, gap="large")
     home_panels = [
         (
             "What I do",
-            "I usually work best when the data is messy, the workflow is a little broken, and someone needs a result they can actually use.",
+            "I do my best work when the data is messy, the workflow needs cleanup, and someone actually needs a useful answer at the end of it.",
         ),
         (
             "Where I fit best",
-            "Data scientist, data analyst, analytics engineering, AI, and fintech-adjacent roles where product thinking matters too.",
+            "I fit best in data science, analytics, analytics engineering, AI, and fintech-adjacent roles where the data is real and someone downstream has to make a decision with it.",
         ),
         (
             "Why this site exists",
-            "Not to dump every class project online, but to show the work I would actually want a hiring team to judge me on.",
+            "I am not trying to put every class project I have touched on one page. This is the work I would actually want a hiring team to judge me on.",
         ),
     ]
 
-    for column, (title, body) in zip(highlight_columns, home_panels):
-        with column:
-            st.markdown(
-                f"""
-                <div class="content-card">
-                    <div class="section-label">{title}</div>
-                    <p>{body}</p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
-
-    st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
-
+    strengths = [
+        "I learn fast, but I would rather the work hold up than sound impressive in a standup.",
+        "I am a good teammate when the team is serious about getting things done well.",
+        "If a workflow is broken or unclear, I'm the person who wants to go trace it down and fix it, not just patch around it.",
+        "I do my best work when I can combine analysis, systems thinking, and clear explanation instead of being boxed into one lane.",
+    ]
+    bullets = "".join(f"<li>{item}</li>" for item in strengths)
     st.markdown(
-        """
-        <div class="content-card compact-card">
-            <div class="section-label">Core signal</div>
-            <h3>My strongest lane is analytics with product awareness, not analytics in a vacuum.</h3>
-            <p>I like work where I have to trace the data, figure out where the friction is, build the logic, and turn it into something another person can use without needing me in the room to explain it.</p>
-            <div class="metric-strip">
-                <div class="metric-box"><strong>Analytics</strong> KPI reporting, trend finding, retention and drop-off analysis</div>
-                <div class="metric-box"><strong>Data</strong> SQL, validation workflows, schema inspection, ETL, transformations</div>
-                <div class="metric-box"><strong>Delivery</strong> APIs, dashboards, ranking systems, and explanations that make sense to normal people</div>
+        f"""
+        <div class="section-shell">
+                <div class="section-heading">
+                    <div class="section-label">Overview</div>
+                    <h2 class="section-title">A clearer map of what belongs on this portfolio</h2>
+                    <p>This homepage should explain the shape of my work quickly: where I fit, what kind of problems I solve, and why the projects on this site belong together.</p>
+                </div>
+            <div class="section-grid">
+                {''.join(
+                    f"<div class='content-card compact-card'><div class='section-label'>{title}</div><p>{body}</p></div>"
+                    for title, body in home_panels
+                )}
             </div>
         </div>
         """,
@@ -408,41 +415,88 @@ def render_home_page() -> None:
 
     st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
 
-    bullets = "".join(f"<li>{item}</li>" for item in PROFILE["strengths"])
     st.markdown(
         f"""
-        <div class="content-card compact-card">
-            <div class="section-label">How I work</div>
-            <h3>What I am like on a team</h3>
-            <ul>{bullets}</ul>
+        <div class="section-grid section-grid-wide">
+            <div class="content-card compact-card section-stack">
+                <div class="section-heading-block">
+                    <div class="section-label">Core signal</div>
+                    <h3>My strongest lane is analytics that knows it is building toward a product.</h3>
+                    <p>I like figuring out where the friction is, building the logic under it, and turning that into something someone else can actually use.</p>
+                </div>
+                <div class="metric-strip">
+                    <div class="metric-box"><strong>Analytics</strong> KPI reporting, trend-finding, retention and drop-off analysis</div>
+                    <div class="metric-box"><strong>Data</strong> SQL, validation workflows, schema work, ETL, transformations</div>
+                    <div class="metric-box"><strong>Delivery</strong> APIs, dashboards, ranking systems, and explanations a normal human can follow</div>
+                </div>
+            </div>
+            <div class="content-card compact-card section-stack">
+                <div class="section-heading-block">
+                    <div class="section-label">How I work</div>
+                    <h3>What I'm like on a team</h3>
+                    <p>I do best on teams that care about clean logic, useful outputs, and fixing the real bottleneck instead of talking around it.</p>
+                </div>
+                <ul>{bullets}</ul>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
     )
 
     st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
-    homepage_experience_highlights = {
-        "Data Science Intern": [
-            "Built a verified raw-survey-to-Supabase staging workflow and an end-to-end KPI reporting process.",
-            "Analyzed onboarding, engagement, retention, drop-off, and specialty-matching data for sponsor-facing reporting.",
-        ],
-        "AI Agent Developer Intern": [
-            "Built a restaurant recommendation workflow around retrieval, ranking logic, and user trust.",
-            "Validated the product with users and improved trust in AI recommendations from 17 percent to 78 percent.",
-        ],
-    }
-    relevant_experience = PROFILE["experience"][:2]
+    homepage_experience = [
+        {
+            "dates": "Spring 2026 | Product launched May 2026",
+            "role": "Data Science Intern",
+            "company": "Helius Health AI",
+            "summary": (
+                "Built the analytics backbone for an AI-enabled healthcare workforce platform, the kind of "
+                "infrastructure that sits quietly underneath and makes everything else answerable."
+            ),
+            "bullets": [
+                "Built KPI pipelines and reporting APIs in Python/FastAPI over Supabase/Postgres, tracking onboarding, assessment completion, engagement, retention, and where users were dropping off.",
+                "Broke down completion behavior by user segment (students, grads, licensed and unlicensed users) to find where the flow was failing and for whom.",
+                "Took a denormalized Excel-based dataset and rebuilt it as clean, validated Supabase/Postgres tables: schema mapping, UUID reconciliation, JSONB handling, the unglamorous stuff that makes everything downstream trustworthy.",
+                "Turned all of that into recurring, sponsor-facing reports that didn't need me to interpret them.",
+            ],
+        },
+        {
+            "dates": "Spring 2026",
+            "role": "AI Agent Developer Intern",
+            "company": "NeuralSeek",
+            "summary": (
+                "Built an AI restaurant recommendation system and then spent a good chunk of time on the harder question: would anyone actually trust what it recommended?"
+            ),
+            "bullets": [
+                "Built the recommendation workflow around retrieval and ranking, not just \"what's a good restaurant\" but \"what's a good restaurant for this person, right now.\"",
+                "Ran user research to figure out what was actually killing trust in AI-generated suggestions, then rebuilt around that.",
+                "Took willingness to trust the recommendations from 17% to 78%.",
+                "Presented findings to stakeholders, where \"the model works\" was not a good enough answer.",
+            ],
+        },
+    ]
+    st.markdown(
+        """
+        <div class="section-heading">
+            <div class="section-label">Selected experience</div>
+            <h2 class="section-title">The two roles that best explain how I work now</h2>
+            <p>These are the strongest signals for the kind of data and AI work I want next. One is heavier on analytics infrastructure and reporting. The other is heavier on product logic and user trust.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
     experience_columns = st.columns(2, gap="large")
-    for column, role in zip(experience_columns, relevant_experience):
+    for column, role in zip(experience_columns, homepage_experience):
         with column:
-            homepage_bullets = homepage_experience_highlights.get(role["role"], role["bullets"][:2])
-            bullets = "".join(f"<li>{bullet}</li>" for bullet in homepage_bullets)
+            bullets = "".join(f"<li>{bullet}</li>" for bullet in role["bullets"])
             st.markdown(
                 f"""
                 <div class="content-card compact-card">
                     <div class="section-label">{role['dates']}</div>
                     <h3>{role['role']}</h3>
                     <p><strong>{role['company']}</strong></p>
+                    <p>{role['summary']}</p>
                     <ul>{bullets}</ul>
                 </div>
                 """,

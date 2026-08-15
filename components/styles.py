@@ -22,6 +22,8 @@ def apply_global_styles() -> None:
             --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
             --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.36);
             --blur: blur(18px) saturate(150%);
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         html,
@@ -139,6 +141,7 @@ def apply_global_styles() -> None:
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 0;
             min-height: 2.65rem;
             padding: 0.42rem 0.95rem;
             border-radius: 999px;
@@ -146,8 +149,22 @@ def apply_global_styles() -> None:
             transition: transform 140ms ease, background 180ms ease, box-shadow 180ms ease;
         }
 
+        div[data-testid="stRadio"] input[type="radio"] {
+            position: absolute !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin: 0 !important;
+        }
+
         div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child {
             display: none;
+        }
+
+        div[data-testid="stRadio"] div[role="radiogroup"] label > div {
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] p {
@@ -183,20 +200,10 @@ def apply_global_styles() -> None:
             color: #ffffff;
         }
 
-        div[data-testid="stRadio"] div[role="radiogroup"] label[data-selected="true"]::after {
-            content: "";
-            width: 0.45rem;
-            height: 0.45rem;
-            border-radius: 50%;
-            background: #d6a75a;
-            margin-left: 0.55rem;
-            box-shadow: 0 0 10px rgba(214, 167, 90, 0.45);
-        }
-
         .hero-card,
         .content-card,
         .contact-card,
-        .hover-project-card,
+        .project-card,
         .timeline-card {
             background: var(--panel);
             border: 1px solid var(--line);
@@ -217,7 +224,7 @@ def apply_global_styles() -> None:
         .hero-card::before,
         .content-card::before,
         .contact-card::before,
-        .hover-project-card::before,
+        .project-card::before,
         .timeline-card::before {
             content: "";
             position: absolute;
@@ -353,7 +360,7 @@ def apply_global_styles() -> None:
         .content-card p,
         .timeline-card p,
         .contact-card p,
-        .hover-project-card p {
+        .project-card p {
             color: var(--muted);
             line-height: 1.7;
             letter-spacing: -0.01em;
@@ -391,97 +398,224 @@ def apply_global_styles() -> None:
             font-weight: 600;
             text-decoration: none;
             margin-right: 1rem;
-            transition: opacity 160ms ease, transform 160ms ease;
+            transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
         }
 
-        .link-row a:hover {
-            opacity: 0.82;
+        @media (hover: hover) and (pointer: fine) {
+            .link-row a:hover {
+                opacity: 0.82;
+                transform: translateY(-1px);
+            }
         }
 
         .link-row a:active {
             transform: scale(0.985);
         }
 
-        .hover-project-card {
+        .project-card {
             position: relative;
-            min-height: 265px;
+            min-height: 100%;
             overflow: hidden;
-            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+            transition: transform 220ms var(--ease-out), border-color 220ms var(--ease-out), box-shadow 220ms var(--ease-out), background 220ms var(--ease-out);
             background:
                 linear-gradient(180deg, rgba(24, 33, 25, 0.84), rgba(12, 17, 13, 0.88));
         }
 
         .project-image {
-            position: absolute;
-            inset: 0;
+            position: relative;
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
-            opacity: 0.28;
-            pointer-events: none;
+            opacity: 0.72;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            display: block;
         }
 
-        .hover-project-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.14);
-            box-shadow: var(--shadow-strong);
+        @media (hover: hover) and (pointer: fine) {
+            .project-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(255, 255, 255, 0.14);
+                box-shadow: var(--shadow-strong);
+            }
         }
 
-        .hover-project-card:active {
+        .project-card:active {
             transform: scale(0.99);
         }
 
-        .hover-summary {
+        .project-card-inner {
             position: relative;
             z-index: 1;
-            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: opacity 0.22s ease, transform 0.22s ease;
+            gap: 1rem;
         }
 
-        .hover-topline {
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .project-date {
             color: var(--muted);
             font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 0.45rem;
         }
 
-        .hover-preview {
-            color: var(--muted);
-            margin-top: 0.8rem;
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.34rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(219, 231, 194, 0.1);
+            color: #edf2df;
+            border: 1px solid rgba(219, 231, 194, 0.16);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .hover-details {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            padding: 1.35rem;
+        .project-lead {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            background: linear-gradient(180deg, rgba(10, 14, 10, 0.08), rgba(10, 14, 10, 0.98) 24%);
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.24s ease, transform 0.24s ease;
+            gap: 0.6rem;
         }
 
-        .hover-project-card:hover .hover-summary {
-            opacity: 0;
+        .project-lead h3 {
+            margin: 0;
+        }
+
+        .project-summary {
+            color: #edf0e8;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-structure {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .project-block {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            padding: 0.95rem 1rem;
+        }
+
+        .project-block strong {
+            display: block;
+            color: #f5f6f1;
+            margin-bottom: 0.4rem;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .project-block p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .project-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .tool-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tool-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.42rem 0.68rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: #edf0e8;
+            font-size: 0.84rem;
+        }
+
+        .project-link-row a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            min-height: 2.75rem;
+            padding: 0.72rem 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(219, 231, 194, 0.18);
+            background: linear-gradient(135deg, rgba(219, 231, 194, 0.12), rgba(226, 186, 120, 0.12));
+            color: #f0f2e9;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 160ms var(--ease-out), box-shadow 180ms var(--ease-out), opacity 180ms var(--ease-out);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .project-link-row a:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+            }
+        }
+
+        .project-link-row a:active {
             transform: scale(0.985);
         }
 
-        .hover-project-card:hover .hover-details {
-            opacity: 1;
-            transform: translateY(0);
+        .contact-link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.85rem;
+            margin-top: 1rem;
         }
 
-        .hover-details p {
-            margin: 0.35rem 0;
-            font-size: 0.94rem;
-            color: #edf0e8;
+        .contact-link-card {
+            display: block;
+            padding: 1rem;
+            border-radius: 18px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 160ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+            min-width: 0;
+        }
+
+        .contact-link-card span {
+            display: block;
+            color: var(--accent-warm);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.35rem;
+        }
+
+        .contact-link-card strong {
+            color: #f5f6f1;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .contact-link-card:hover {
+                transform: translateY(-2px);
+                border-color: rgba(255, 255, 255, 0.14);
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+            }
         }
 
         .metric-strip {
@@ -489,6 +623,67 @@ def apply_global_styles() -> None:
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 1rem;
             margin-top: 1.1rem;
+        }
+
+        .section-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .section-shell {
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+        }
+
+        .section-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .section-heading p,
+        .section-heading-block p {
+            max-width: 46rem;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .section-grid-wide {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .detail-box {
+            background: rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 0.95rem 1rem;
+        }
+
+        .detail-box span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.3rem;
+        }
+
+        .detail-box strong {
+            color: #f5f6f1;
+            font-size: 0.98rem;
+            line-height: 1.45;
         }
 
         .metric-box {
@@ -573,23 +768,14 @@ def apply_global_styles() -> None:
             .hero-card,
             .content-card,
             .contact-card,
-            .hover-project-card,
+            .project-card,
             .timeline-card {
                 padding: 1.15rem;
                 border-radius: 24px;
             }
 
-            .hover-details {
-                position: static;
-                padding: 0.9rem 0 0;
-                opacity: 1;
-                transform: none;
-                background: transparent;
-            }
-
-            .hover-summary {
-                opacity: 1 !important;
-                transform: none !important;
+            .project-image {
+                height: 190px;
             }
         }
 
@@ -606,18 +792,22 @@ def apply_global_styles() -> None:
             .hero-card,
             .content-card,
             .contact-card,
-            .hover-project-card,
+            .project-card,
             .timeline-card,
             .kpi,
             .metric-box {
                 backdrop-filter: none;
             }
 
-            .hover-project-card:hover,
-            .hover-project-card:active,
+            .project-card:hover,
+            .project-card:active,
             div[data-testid="stRadio"] div[role="radiogroup"] label:hover,
             div[data-testid="stRadio"] div[role="radiogroup"] label:active,
-            .resume-download-link:active {
+            .resume-download-link:active,
+            .contact-link-card:hover,
+            .contact-link-card:active,
+            .project-link-row a:hover,
+            .project-link-row a:active {
                 transform: none;
             }
         }

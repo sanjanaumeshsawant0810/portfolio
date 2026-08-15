@@ -6,9 +6,9 @@ PROFILE = {
     "linkedin": "https://www.linkedin.com/in/sanjana-umesh-sawant-oct082002/",
     "github": "https://github.com/sanjanaumeshsawant0810",
     "summary": (
-        "I like work where the data is messy, the logic matters, and the end result actually helps someone decide what to do next. "
-        "Most of my strongest work sits between analytics, product thinking, and implementation: KPI reporting, SQL and ETL workflows, "
-        "ranking and recommendation systems, and applied modeling that has to make sense to normal people, not just technical teams."
+        "I like work where the data is messy, the logic matters, and the end result helps someone decide what to do next. "
+        "Most of my strongest work sits between analytics, product thinking, and implementation. That usually means KPI reporting, SQL and ETL workflows, "
+        "ranking and recommendation systems, and applied modeling that has to make sense to people outside the technical team."
     ),
     "highlights": [
         {"value": "ETL + KPI", "label": "end-to-end reporting workflows built at Helius"},
@@ -18,10 +18,10 @@ PROFILE = {
         {"value": "Top 12%", "label": "ICICIT 2024 paper placement"},
     ],
     "strengths": [
-        "I learn fast, but I care more about whether the work actually works than whether it sounds impressive.",
-        "I am a strong team player when the team is serious, ambitious, and trying to get the work done well.",
-        "If the workflow is messy, unclear, or breaking somewhere, I usually want to trace it, fix it, and make it usable.",
-        "I am strongest when I can combine analysis, systems thinking, and clear explanation instead of staying in only one lane.",
+        "I learn fast, but I care more about whether the work holds up than whether it sounds impressive.",
+        "I work well on teams that are serious about doing good work and getting it over the line.",
+        "If a workflow is messy, unclear, or breaking somewhere, I usually want to trace it, fix it, and make it usable.",
+        "I do my best work when I can combine analysis, systems thinking, and clear explanation instead of staying in one lane.",
     ],
     "education": [
         {

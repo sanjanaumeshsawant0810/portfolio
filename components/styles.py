@@ -165,14 +165,13 @@ def apply_global_styles() -> None:
             margin: 0 !important;
         }
 
-        div[data-testid="stRadio"] input[type="radio"] + div,
-        div[data-testid="stRadio"] [data-baseweb="radio"],
-        div[data-testid="stRadio"] [data-baseweb="radio"] *,
-        div[data-testid="stRadio"] [role="radio"],
-        div[data-testid="stRadio"] [role="radio"] * {
+        div[data-testid="stRadio"] input[type="radio"] + div {
             display: none !important;
         }
 
+        div[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child,
+        div[data-testid="stRadio"] [data-baseweb="radio"] svg,
+        div[data-testid="stRadio"] [data-baseweb="radio"] circle,
         div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child,
         div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child * {
             display: none;

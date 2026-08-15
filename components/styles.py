@@ -118,7 +118,8 @@ def apply_global_styles() -> None:
             padding: 0.45rem 0.7rem;
             margin-bottom: 1.5rem;
             backdrop-filter: var(--blur);
-            width: max-content !important;
+            box-sizing: border-box;
+            width: 100% !important;
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -130,17 +131,17 @@ def apply_global_styles() -> None:
         div[data-testid="stRadio"] > div {
             display: flex;
             justify-content: center;
-            width: auto;
+            width: 100%;
             margin: 0 auto;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] {
-            display: inline-flex;
-            justify-content: center;
+            display: flex;
+            justify-content: space-evenly;
             align-items: center;
             gap: 0.45rem;
             flex-wrap: wrap;
-            width: auto;
+            width: 100%;
             margin: 0 auto;
         }
 

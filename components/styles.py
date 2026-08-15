@@ -105,114 +105,41 @@ def apply_global_styles() -> None:
             height: 0.9rem;
         }
 
-        div[data-testid="stRadio"] {
-            display: flex;
-            justify-content: center;
-            background:
-                linear-gradient(180deg, rgba(24, 33, 25, 0.82), rgba(16, 22, 17, 0.74));
-            border: 1px solid var(--line-strong);
+        div[data-testid="stHorizontalBlock"] {
+            margin-bottom: 1.5rem;
+        }
+
+        div[data-testid="stButton"] > button {
+            min-height: 2.65rem;
             border-radius: 999px;
+            border: 1px solid var(--line-strong);
+            background: linear-gradient(180deg, rgba(24, 33, 25, 0.82), rgba(16, 22, 17, 0.74));
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: -0.01em;
             box-shadow:
                 0 1px 0 rgba(255, 255, 255, 0.06) inset,
                 var(--shadow);
-            padding: 0.45rem 0.7rem;
-            margin-bottom: 1.5rem;
             backdrop-filter: var(--blur);
-            box-sizing: border-box;
-            width: 100% !important;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            position: sticky;
-            top: 0.2rem;
-            z-index: 10;
+            transition: transform 140ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
         }
 
-        div[data-testid="stRadio"] > div {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            gap: 0.45rem;
-            flex-wrap: wrap;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] label {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0;
-            min-height: 2.65rem;
-            padding: 0.42rem 0.95rem;
-            border-radius: 999px;
-            background: transparent;
-            transition: transform 140ms ease, background 180ms ease, box-shadow 180ms ease;
-        }
-
-        div[data-testid="stRadio"] input[type="radio"] {
-            position: absolute !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            width: 0 !important;
-            height: 0 !important;
-            margin: 0 !important;
-        }
-
-        div[data-testid="stRadio"] input[type="radio"] + div {
-            display: none !important;
-        }
-
-        div[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child,
-        div[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child > div,
-        div[data-testid="stRadio"] [data-baseweb="radio"] svg,
-        div[data-testid="stRadio"] [data-baseweb="radio"] circle {
-            display: none !important;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] label > div {
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] p {
-            color: var(--muted);
-            font-weight: 600;
-            font-size: 0.96rem;
-            letter-spacing: -0.01em;
-            transition: color 0.18s ease;
-            margin: 0;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] label:hover {
-            background: rgba(255, 255, 255, 0.05);
+        div[data-testid="stButton"] > button:hover {
+            border-color: var(--line-strong);
+            color: #f0f2e9;
             transform: translateY(-1px);
         }
 
-        div[data-testid="stRadio"] div[role="radiogroup"] label:active {
+        div[data-testid="stButton"] > button:active {
             transform: scale(0.985);
         }
 
-        div[data-testid="stRadio"] div[role="radiogroup"] label:hover p {
-            color: #f0f2e9;
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] label[data-selected="true"] {
+        div[data-testid="stButton"] > button[kind="primary"] {
             background: linear-gradient(180deg, rgba(223, 235, 203, 0.12), rgba(212, 225, 188, 0.08));
+            color: #ffffff;
             box-shadow:
                 inset 0 1px 0 rgba(255, 255, 255, 0.08),
                 inset 0 0 0 1px rgba(223, 235, 203, 0.1);
-        }
-
-        div[data-testid="stRadio"] div[role="radiogroup"] label[data-selected="true"] p {
-            color: #ffffff;
         }
 
         .hero-card,
@@ -764,10 +691,6 @@ def apply_global_styles() -> None:
                 padding-top: 1rem;
             }
 
-            div[data-testid="stRadio"] {
-                top: 0.6rem;
-            }
-
             .page-gap {
                 height: 1rem;
             }
@@ -803,7 +726,6 @@ def apply_global_styles() -> None:
                 scroll-behavior: auto !important;
             }
 
-            div[data-testid="stRadio"],
             .hero-card,
             .content-card,
             .contact-card,
@@ -816,8 +738,8 @@ def apply_global_styles() -> None:
 
             .project-card:hover,
             .project-card:active,
-            div[data-testid="stRadio"] div[role="radiogroup"] label:hover,
-            div[data-testid="stRadio"] div[role="radiogroup"] label:active,
+            div[data-testid="stButton"] > button:hover,
+            div[data-testid="stButton"] > button:active,
             .resume-download-link:active,
             .contact-link-card:hover,
             .contact-link-card:active,

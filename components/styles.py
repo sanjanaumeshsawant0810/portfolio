@@ -130,17 +130,17 @@ def apply_global_styles() -> None:
         div[data-testid="stRadio"] > div {
             display: flex;
             justify-content: center;
-            width: 100%;
+            width: auto;
             margin: 0 auto;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] {
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             gap: 0.45rem;
             flex-wrap: wrap;
-            width: fit-content;
+            width: auto;
             margin: 0 auto;
         }
 
@@ -170,11 +170,10 @@ def apply_global_styles() -> None:
         }
 
         div[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child,
+        div[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child > div,
         div[data-testid="stRadio"] [data-baseweb="radio"] svg,
-        div[data-testid="stRadio"] [data-baseweb="radio"] circle,
-        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child,
-        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child * {
-            display: none;
+        div[data-testid="stRadio"] [data-baseweb="radio"] circle {
+            display: none !important;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] label > div {

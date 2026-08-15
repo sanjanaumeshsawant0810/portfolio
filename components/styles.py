@@ -106,6 +106,8 @@ def apply_global_styles() -> None:
         }
 
         div[data-testid="stRadio"] {
+            display: flex;
+            justify-content: center;
             background:
                 linear-gradient(180deg, rgba(24, 33, 25, 0.82), rgba(16, 22, 17, 0.74));
             border: 1px solid var(--line-strong);
@@ -116,7 +118,7 @@ def apply_global_styles() -> None:
             padding: 0.45rem 0.7rem;
             margin-bottom: 1.5rem;
             backdrop-filter: var(--blur);
-            width: fit-content;
+            width: max-content !important;
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -126,7 +128,10 @@ def apply_global_styles() -> None:
         }
 
         div[data-testid="stRadio"] > div {
-            margin: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] {
@@ -135,6 +140,8 @@ def apply_global_styles() -> None:
             align-items: center;
             gap: 0.45rem;
             flex-wrap: wrap;
+            width: fit-content;
+            margin: 0 auto;
         }
 
         div[data-testid="stRadio"] div[role="radiogroup"] label {
@@ -160,11 +167,14 @@ def apply_global_styles() -> None:
 
         div[data-testid="stRadio"] input[type="radio"] + div,
         div[data-testid="stRadio"] [data-baseweb="radio"],
-        div[data-testid="stRadio"] [role="radio"] {
+        div[data-testid="stRadio"] [data-baseweb="radio"] *,
+        div[data-testid="stRadio"] [role="radio"],
+        div[data-testid="stRadio"] [role="radio"] * {
             display: none !important;
         }
 
-        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child {
+        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child,
+        div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child * {
             display: none;
         }
 

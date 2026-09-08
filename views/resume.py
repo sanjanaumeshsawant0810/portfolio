@@ -16,15 +16,15 @@ def render_resume_page() -> None:
         """
         <style>
             div[data-testid="stDownloadButton"] button {
-                background: #161d16 !important;
-                border: 1px solid rgba(184, 201, 140, 0.42) !important;
-                color: #edf1e7 !important;
+                background: #315f72 !important;
+                border: 1px solid #315f72 !important;
+                color: #ffffff !important;
             }
 
             div[data-testid="stDownloadButton"] button:hover {
-                background: #1d281d !important;
-                border-color: #b8c98c !important;
-                color: #f0f2e9 !important;
+                background: #274f60 !important;
+                border-color: #274f60 !important;
+                color: #ffffff !important;
             }
 
             div[data-testid="stDownloadButton"] button p {

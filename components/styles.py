@@ -249,6 +249,18 @@ def apply_global_styles() -> None:
             margin: 0;
         }
 
+        .content-card > .section-label,
+        .section-heading > .section-label,
+        .about-strip .section-label {
+            font-size: 2rem;
+        }
+
+        .content-card > h1,
+        .section-heading > .section-title,
+        .about-strip h2 {
+            font-size: 1.75rem;
+        }
+
         .section-intro-card p,
         .section-heading-block p {
             margin-bottom: 0;

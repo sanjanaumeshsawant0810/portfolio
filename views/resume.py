@@ -62,4 +62,4 @@ def render_resume_page() -> None:
         return
 
     with st.container(border=True):
-        st.image(str(PREVIEW_PATH), use_column_width=True)
+        st.image(str(PREVIEW_PATH), width="stretch")

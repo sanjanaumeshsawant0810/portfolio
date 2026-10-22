@@ -57,9 +57,8 @@ def render_resume_page() -> None:
             use_container_width=True,
         )
     st.markdown("<div class='page-gap'></div>", unsafe_allow_html=True)
-    if not PREVIEW_PATH.exists():
-        st.error("The resume preview is missing from assets/resume.")
-        return
-
     with st.container(border=True):
-        st.image(str(PREVIEW_PATH), width="stretch")
+        try:
+            st.pdf(RESUME_PATH, height=1000)
+        except st.errors.StreamlitAPIException:
+            st.image(str(PREVIEW_PATH), width="stretch")
